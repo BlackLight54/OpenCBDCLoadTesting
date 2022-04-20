@@ -9,7 +9,7 @@ do
     esac
 done
 
-
+echo "Generating test envirovment..."
 transaction_csv=${transaction_csv:-./load_testing/transactions.csv}
 numOfTxs=${numOfTxs:-20}
 wallet_csv=${wallet_csv:-./load_testing/wallets.csv}
