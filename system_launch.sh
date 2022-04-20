@@ -32,7 +32,6 @@ REBUILD=${REBUILD:-false};
 COMPOSE_FILE=${COMPOSE_FILE:-"docker-compose-2pc.yml"};
 SCRIPTPATH="$(dirname $(realpath "$BASH_SOURCE"))"
 cd ..
-cd opencbdc-tx
 echo "Starting service..."
 dockerBuild(){
     if [ "$REBUILD" == true ]; then
