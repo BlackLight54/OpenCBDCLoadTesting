@@ -1,0 +1,6 @@
+[submodule "opencbdc-tx"]
+	path = opencbdc-tx
+	url = https://github.com/BlackLight54/opencbdc-tx.git
+[submodule "JmeterCustomSampler"]
+	path = JmeterCustomSampler
+	url = https://github.com/BlackLight54/JmeterCustomSampler.git
