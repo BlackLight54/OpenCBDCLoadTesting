@@ -1,10 +1,5 @@
 #!/bin/bash
-
 . ./test.cfg
-
-
-
-
 cd "$(dirname "$0")"
 # ls && exit 0;
 mkdir -p $res_folder &&
