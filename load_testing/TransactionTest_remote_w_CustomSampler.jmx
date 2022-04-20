@@ -29,6 +29,11 @@
             <stringProp name="Argument.value">20</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
+          <elementProp name="RESDIR" elementType="Argument">
+            <stringProp name="Argument.name">RESDIR</stringProp>
+            <stringProp name="Argument.value">res</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
         </collectionProp>
       </Arguments>
       <hashTree/>
@@ -69,13 +74,13 @@
             <connectTime>true</connectTime>
           </value>
         </objProp>
-        <stringProp name="filename">${WORKDIR}/load_testing/dump/results_tree.xml</stringProp>
+        <stringProp name="filename">${WORKDIR}/load_testing/${RESDIR}/results_tree.xml</stringProp>
       </ResultCollector>
       <hashTree/>
       <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Transaction CSV Data Set Config" enabled="true">
         <stringProp name="delimiter">,</stringProp>
         <stringProp name="fileEncoding"></stringProp>
-        <stringProp name="filename">${WORKDIR}/load_testing/transactions.csv</stringProp>
+        <stringProp name="filename">${WORKDIR}/load_testing/${RESDIR}/transactions.csv</stringProp>
         <boolProp name="ignoreFirstLine">true</boolProp>
         <boolProp name="quotedData">false</boolProp>
         <boolProp name="recycle">false</boolProp>
@@ -85,7 +90,7 @@
       </CSVDataSet>
       <hashTree/>
       <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Wallet CSV Data Set Config" enabled="true">
-        <stringProp name="filename">${WORKDIR}/load_testing/wallets.csv</stringProp>
+        <stringProp name="filename">${WORKDIR}/load_testing/${RESDIR}/wallets.csv</stringProp>
         <stringProp name="fileEncoding"></stringProp>
         <stringProp name="variableNames">id,mempool,wallet,address</stringProp>
         <boolProp name="ignoreFirstLine">false</boolProp>
@@ -382,14 +387,14 @@ vars.get(&quot;importinput&quot;))</stringProp>
         <JavaSampler guiclass="JavaTestSamplerGui" testclass="JavaSampler" testname="Java Request" enabled="true">
           <elementProp name="arguments" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" enabled="true">
             <collectionProp name="Arguments.arguments">
-              <elementProp name="FROM_mempool file relative path" elementType="Argument">
-                <stringProp name="Argument.name">FROM_mempool file relative path</stringProp>
-                <stringProp name="Argument.value">${from_mempool}</stringProp>
+              <elementProp name="mempool to transfer the funds from" elementType="Argument">
+                <stringProp name="Argument.name">mempool to transfer the funds from</stringProp>
+                <stringProp name="Argument.value"></stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
-              <elementProp name="FROM_mempool file relative path" elementType="Argument">
-                <stringProp name="Argument.name">FROM_mempool file relative path</stringProp>
-                <stringProp name="Argument.value">${from_mempool}</stringProp>
+              <elementProp name="wallet to transfer the funds from" elementType="Argument">
+                <stringProp name="Argument.name">wallet to transfer the funds from</stringProp>
+                <stringProp name="Argument.value"></stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
               <elementProp name="destination address" elementType="Argument">
