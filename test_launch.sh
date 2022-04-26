@@ -19,3 +19,4 @@ else
     docker exec opencbdc-tx_client /opt/apache-jmeter-5.4.3/bin/jmeter -t ./load_testing/TransactionTest_remote.jmx -l ./load_testing/$res_folder/results.jtl -j ./load_testing/$res_folder/jmeter.log -n -JtxCount=$numOfTxs -JcustomSampler="true" -Dthreadcount=$threadCount 
     
 fi 
+docker attach opencbdc-tx_client
