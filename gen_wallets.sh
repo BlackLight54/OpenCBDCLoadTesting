@@ -1,4 +1,6 @@
 #!/bin/bash
+
+. ./colors
 cd "$(dirname "$0")"
 cd ..
 
@@ -16,8 +18,8 @@ numOfWallets=${numOfWallets:-5}
 amount=${amount:-10}
 remote=${remote:-false}
 
-echo "Generating wallets in $PWD, data set in $PWD/$wallet_csv"
-echo "Resetting csv..."
+echo -ne "Generating ${YELLOW}$numOfWallets${NC} wallets ... "
+#echo "in $PWD, data set in $PWD/$wallet_csv ... "
 rm -f $wallet_csv
 touch $wallet_csv
 #printf "id,mempool,wallet,address\n" >> $wallet_csv
@@ -31,5 +33,5 @@ do
         fi
 done
 
-) && ./load_testing/mint.sh -w $wallet_csv -c $numOfWallets -v $amount && echo "Done."
+) && ./load_testing/mint.sh -w $wallet_csv -c $numOfWallets -v $amount && echo "${GREEN}done${NC}"
 

@@ -1,4 +1,6 @@
 #!/bin/bash
+
+. ./colors
 while [[ $# -gt 0 ]]; do
   case $1 in
     -r|--reset)
@@ -53,17 +55,17 @@ dockerCompose(){
 startClient(){
 
 
-    echo "Removing old client..."
-    docker rm -f opencbdc-tx_client && echo "Removed old client."
-    echo "Starting client..."
-    echo $SCRIPTPATH
-    docker run -d --network 2pc-network --name opencbdc-tx_client -p 1099:1099 -p 4000:4000 --mount type=bind,source=$SCRIPTPATH,target=/opt/tx-processor/load_testing -ti opencbdc-tx /bin/bash &&
-    echo "Client is up." &&    
-    docker network connect bridge opencbdc-tx_client &&
-    echo "Client is connected to bridge network."
+    echo -ne "Removing old client ... "
+    docker rm -f opencbdc-tx_client > /dev/null && echo "${GREEN}done${NC}"
+    echo -ne "Starting client ... "
+    # echo $SCRIPTPATH
+    docker run -d --network 2pc-network --name opencbdc-tx_client -p 1099:1099 -p 4000:4000 --mount type=bind,source=$SCRIPTPATH,target=/opt/tx-processor/load_testing -ti opencbdc-tx /bin/bash > /dev/null && 
+    echo "${GREEN}done${NC}"     
+    # && docker network connect bridge opencbdc-tx_client &&
+    # echo "Client is connected to bridge network."
 }
 dockerBuild &&
 dockerCompose &&
-startClient &&
-echo "Docker ips:" &&
-docker inspect --format "{{ .Name }} => {{ .NetworkSettings.IPAddress }}" $(docker ps -a -q)
+startClient 
+# && echo "Docker ips:" &&
+# docker inspect --format "{{ .Name }} => {{ .NetworkSettings.IPAddress }}" $(docker ps -a -q)

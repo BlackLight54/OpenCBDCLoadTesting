@@ -14,7 +14,7 @@ function getTwoNonIdenticalRandomInts(max){
     return [rand1, rand2];
 }
 
-console.log(`Generating ${process.argv[4]} random transactions from ${process.argv[2]} to ${process.argv[3]} CSV...`);
+process.stdout.write(`Generating ${process.argv[4]} transactions ... `);
 fs.readFile(process.argv[2], function(err, data) {  
     const list = data.toString().replace(/\r\n/g,'\n').split('\n');
     if(process.argv.length > 4){
@@ -34,5 +34,8 @@ fs.readFile(process.argv[2], function(err, data) {
             stream.write(`${i},${fromId},${fromMempool},${fromWallet},${toId},${toMempool},${toWallet},${toAddress}\n`);
         }
         stream.end();
-    }    
+        process.stdout.write("\x1b[32mdone\x1b[0m\n");
+    }
+    else process.stdout.write("Failed!\n");
+
 });

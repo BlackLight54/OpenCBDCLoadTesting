@@ -1,4 +1,6 @@
 #!/bin/bash
+. ./load_testing/colors
+. ./load_testing/test.cfg
 cd "$(dirname "$0")"
 cd ..
 remote=${remote:-false}
@@ -18,12 +20,13 @@ amount=${amount:-10}
 wallet_csv=${wallet_csv:-"./load_testing/wallets.csv"}
 RANDOM=${RANDOM:-false}
 
-echo "Minting to each wallet..."
+echo -ne "Minting pcs:${YELLOW}${utxo_count}${NC} val:${YELLOW}${amount}${NC} to each wallet ... "
 cat ${wallet_csv} | while read line; do
     id=$(echo $line | cut -d',' -f1)
     mempool=$(echo $line | cut -d',' -f2)
     wallet=$(echo $line | cut -d',' -f3)
     if [ "$RAND" == true ]; then
+        echo -ne "${CYAN}random pcs and val"
         amountMax=${amountMax:-$amount}
         utxo_count_max=${utxo_count_max:-$utxo_count}
         amount=$((RANDOM%$amountMax + 1 ))

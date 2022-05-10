@@ -1,4 +1,6 @@
 #!/bin/bash
+. ./test.cfg
+. ./colors
 cd "$(dirname "$0")"
 cd ..
 
@@ -15,6 +17,5 @@ wallet_csv=${wallet_csv:-./load_testing/wallets.csv}
 transaction_csv=${transaction_csv:-./load_testing/transactions.csv}
 numOfTxs=${numOfTxs:-20}
 
-echo "Generating transactions data set in $PWD/$transaction_csv"
-node ./load_testing/gen_tranfers.js $wallet_csv $transaction_csv $numOfTxs && 
-echo "Done."
+echo -ne "Generating ${YELLOW}$numOfTxs${NC} transactions data set in $PWD/$transaction_csv ...  "
+node ./load_testing/gen_tranfers.js $wallet_csv $transaction_csv $numOfTxs 

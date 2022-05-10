@@ -1,0 +1,7 @@
+GREEN=$'\x1b[0;32m'
+RED=$'\x1b[0;31m'
+NC=$'\x1b[0m'
+YELLOW='\x1b[0;33m'
+BLUE='\x1b[0;34m'
+MAGENTA='\x1b[0;35m'
+CYAN='\x1b[0;36m'

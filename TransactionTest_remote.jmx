@@ -21,7 +21,7 @@
           </elementProp>
           <elementProp name="threadcount" elementType="Argument">
             <stringProp name="Argument.name">threadcount</stringProp>
-            <stringProp name="Argument.value">5</stringProp>
+            <stringProp name="Argument.value">${__P(threadcount, 5)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="txCount" elementType="Argument">
@@ -120,7 +120,7 @@
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
-        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="Custom" enabled="true">
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="Custom Sampler" enabled="true">
           <stringProp name="IfController.condition">${__groovy(${customSampler} == true)}</stringProp>
           <boolProp name="IfController.evaluateAll">false</boolProp>
           <boolProp name="IfController.useExpression">true</boolProp>
@@ -129,6 +129,11 @@
           <JavaSampler guiclass="JavaTestSamplerGui" testclass="JavaSampler" testname="Java Request" enabled="true">
             <elementProp name="arguments" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments">
+                <elementProp name="Config file" elementType="Argument">
+                  <stringProp name="Argument.name">Config file</stringProp>
+                  <stringProp name="Argument.value">2pc-compose.cfg</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
                 <elementProp name="Mempool to transfer the funds from" elementType="Argument">
                   <stringProp name="Argument.name">Mempool to transfer the funds from</stringProp>
                   <stringProp name="Argument.value">${from_mempool}</stringProp>
@@ -142,6 +147,11 @@
                 <elementProp name="Destination address" elementType="Argument">
                   <stringProp name="Argument.name">Destination address</stringProp>
                   <stringProp name="Argument.value">${to_address}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="Identifier for this transaction" elementType="Argument">
+                  <stringProp name="Argument.name">Identifier for this transaction</stringProp>
+                  <stringProp name="Argument.value">${tx_id}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
               </collectionProp>
@@ -464,7 +474,7 @@ vars.get(&quot;importinput&quot;))</stringProp>
             <connectTime>true</connectTime>
           </value>
         </objProp>
-        <stringProp name="filename">C:\Users\black\OneDrive\BME\Önlab\opencbdc-tx\load_testing\dump\results_tree.xml</stringProp>
+        <stringProp name="filename">C:\Users\black\OneDrive\BME\Önlab\final\opencbdc-tx\load_testing\res\results_tree.xml</stringProp>
       </ResultCollector>
       <hashTree/>
       <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="false">
