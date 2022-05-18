@@ -18,19 +18,20 @@ numOfWallets=${numOfWallets:-5}
 amount=${amount:-10}
 remote=${remote:-false}
 
-echo -ne "Generating ${YELLOW}$numOfWallets${NC} wallets ... "
+echo -e "Generating ${YELLOW}$numOfWallets${NC} wallets ... "
 #echo "in $PWD, data set in $PWD/$wallet_csv ... "
 rm -f $wallet_csv
 touch $wallet_csv
 #printf "id,mempool,wallet,address\n" >> $wallet_csv
 ( for ((i=0; i<numOfWallets; i++));   
 do    
-        #echo "Creating wallet $i..."
+        echo "Creating wallet $i..."
         printf "$i,mempool$i.dat,wallet$i.dat," >> $wallet_csv
         if [ ${remote} == "false" ];
         then (docker exec opencbdc-tx_client ./build/src/uhs/client/client-cli 2pc-compose.cfg mempool$i.dat wallet$i.dat newaddress | tee >( tail -1 >> $wallet_csv)) ;
         else ./build/src/uhs/client/client-cli ./2pc-compose.cfg mempool$i.dat wallet$i.dat newaddress |  tail -1 >> $wallet_csv ;
         fi
+        echo -ne '\e[1A\e[K'
 done
 
 ) && ./load_testing/mint.sh -w $wallet_csv -c $numOfWallets -v $amount && echo "${GREEN}done${NC}"
