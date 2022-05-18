@@ -46,9 +46,9 @@ dockerCompose(){
     
     echo "Running Docker-compose..."
     if [ "$RESET" == false ]; then
-        docker-compose --file $COMPOSE_FILE up --detach || exit 1;
+        docker compose  --file $COMPOSE_FILE up --detach || exit 1;
     else
-        docker-compose --file $COMPOSE_FILE up --force-recreate --detach || exit 1;
+        docker compose up --file $COMPOSE_FILE up --force-recreate --detach || exit 1;
     fi
 }
    

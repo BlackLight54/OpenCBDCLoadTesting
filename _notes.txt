@@ -4,3 +4,4 @@
 -may implement configuration of horizontal scaling
 
 
+sshpass -p jX36aV1k2W ssh vm.niif.cloud.bme.hu -p 13763 -l cloud 
